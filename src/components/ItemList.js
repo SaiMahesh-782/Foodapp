@@ -1,8 +1,13 @@
+import { useDispatch } from "react-redux";
 import { Swiggy_Image } from "../Constant";
+import { addItem } from "../utils/CardSlice";
 
 const ItemList = ({ items }) => {
-  console.log({ items });
+  const dispatch=useDispatch()
+  const dispatchaction=(item)=>{
+dispatch(addItem(item))
 
+  }
   return (
     <>
       <ul>
@@ -16,7 +21,8 @@ const ItemList = ({ items }) => {
             </div>
             <div>
                 <div className="absolute">
-            <button className="bg-white text-green-600 my-12 px-2 py-1 rounded">Add +</button>
+            <button className="bg-white text-green-600 my-12 px-2 py-1 rounded"
+             onClick={()=>dispatchaction(item)}>Add +</button>
             </div>
               <img className="h-20 w-20" src={Swiggy_Image + item.card.info.imageId} alt="" />
               

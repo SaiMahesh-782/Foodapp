@@ -6,20 +6,22 @@ import { createBrowserRouter } from "react-router-dom";
 import Cart from "./components/Cart";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import Error from "./components/error"; // Correct the import name to Error
+import Error from "./components/error"; 
 import { Outlet } from "react-router-dom";
 import Menu from "./components/Menu";
-import Grocery from "./components/grocery";
 import './index.css'
-
-
+import userContext from './utils/Usercontext';
+import { Provider } from 'react-redux';
+import Appstore from './utils/AppStore';
 
 const AppLayout = () => {
   return (
-    <React.Fragment>
+    <Provider store={Appstore}>
+    <userContext.Provider value={userContext.name}>
       <Header />
       <Outlet />
-    </React.Fragment>
+    </userContext.Provider>
+    </Provider>
   );
 };
 
@@ -45,10 +47,7 @@ const appRouter = createBrowserRouter([
         path: "/cart", // Corrected path
         element: <Cart />,
       },
-      {
-        path: "/grocery", // Corrected path
-        element: <Grocery/>,
-      },
+    
       {
         path:"/restaurent/:id",
         element:<Menu/>

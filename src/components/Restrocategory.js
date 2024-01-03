@@ -1,22 +1,17 @@
 
-import { useState } from "react"
 import ItemList from "./ItemList"
 
-
-
-const Restrocategory=({data})=>{
+const Restrocategory=({data,showItems,setshowIndex})=>{
    
-
-    const [showItems,setShowItems]=useState(false)
     const dropdown=()=>{
-        setShowItems(!showItems)
+        setshowIndex()
     }
     return(
         <>
-        <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-6 ">
-            <div className="flex justify-between ">
+        <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-6 cursor-pointer " >
+            <div className="flex justify-between " onClick={dropdown}>
             <span className="font-bold">{data.title}[{data.itemCards.length}]</span>
-            <count  span className="cursor-pointer" onClick={dropdown}>
+            <count  span className="cursor-pointer" >
                 
             {showItems ? "🔼" : "🔽"}</count>
         </div>

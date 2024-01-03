@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "./UseOnline";
+import { useSelector } from "react-redux";
+
 
 const Header = () => {
   const [loginBtnText, setLoginBtnText] = useState("Login");
   const onlinestatus = useOnline();
+const cartItems=useSelector((store)=>store.cart.items)
+
+
   const handleLoginClick = () => {
     // You can add login logic here
-    console.log("Login button clicked");
     setLoginBtnText((prevText) => (prevText === "Login" ? "Logout" : "Login"));
   };
 
   return (
     <div className="flex items-center justify-between p-1 bg-red-300 text-white">
       <img
-        className="w-20"
+        className="w-20 cursor-pointer"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkRxux1MeQZJuPycioQSBBMCkULQ1WmZlBZQ&usqp=CAU"
         alt="Company Logo"
-      />
+      /> 
       <div className="flex items-center space-x-4">
-        <ul className="flex space-x-4">
+        <ul className="flex space-x-4 cursor-pointer">
           <li>
             Online {onlinestatus ? "✅" : "❌"}
           </li>
@@ -33,7 +37,7 @@ const Header = () => {
             <Link to="/contact" className="hover:underline cursor-pointer">Contact</Link>
           </li>
           <li>
-            <Link to="/cart" className="hover:underline cursor-pointer">Cart</Link>
+            <Link to="/cart" className="hover:underline cursor-pointer">Cart[{cartItems.length}]</Link>
           </li>
           <li>
             <Link to="/grocery" className="hover:underline">Grocery</Link>
