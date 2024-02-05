@@ -27,6 +27,7 @@ const Body = () => {
 
       function getRestaurantInformation() {
         for (let i = 0; i < json?.data?.cards.length; i++) {
+          // let correctData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
           let correctData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
           if (correctData !== undefined) {
             console.log(correctData)

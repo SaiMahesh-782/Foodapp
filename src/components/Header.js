@@ -39,9 +39,7 @@ const cartItems=useSelector((store)=>store.cart.items)
           <li>
             <Link to="/cart" className="hover:underline cursor-pointer">Cart[{cartItems.length}]</Link>
           </li>
-          <li>
-            <Link to="/grocery" className="hover:underline">Grocery</Link>
-          </li>
+          
         </ul>
         <button
           className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded"
